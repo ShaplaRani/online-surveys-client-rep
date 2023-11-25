@@ -5,7 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImage from "../../assets/login.jpg"
 import useAuth from "../../hooks/useAuth";
-import Swal from "sweetalert2";
+//import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Login = () => {
@@ -28,7 +28,8 @@ const Login = () => {
        
        })
        .catch(error => {
-        Swal.fire(error.message)
+        console.log(error);
+        //Swal.fire(error.message)
        })
     }
 
@@ -49,7 +50,8 @@ const Login = () => {
             
         })
         .catch(error => {
-          Swal.fire(error)
+            console.log(error);
+         // Swal.fire(error)
         })
 
     }

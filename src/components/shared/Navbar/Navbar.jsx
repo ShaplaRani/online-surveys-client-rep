@@ -123,15 +123,15 @@ const Navbar = () => {
     </NavLink>
 
     
-    {/* <NavLink
-        to="/addJob"
+     <NavLink
+        to="/dashboard"
         className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-emerald-400 underline" : ""
         }
     >
-        <li className="text-lg md:text-xl font-semibold"> Add Job</li>
+        <li className="text-lg md:text-xl font-semibold"> Dashboard</li>
 
-    </NavLink>
+   </NavLink>
     <NavLink
         to="/postedJob"
         className={({ isActive, isPending }) =>
@@ -156,7 +156,7 @@ const Navbar = () => {
         }
     >   <li className="text-lg md:text-xl font-semibold"> Bid Request</li>
 
-    </NavLink> */}
+    </NavLink> 
 
 </>
 
