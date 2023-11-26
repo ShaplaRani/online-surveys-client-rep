@@ -90,13 +90,17 @@ import { Link, NavLink } from "react-router-dom";
 
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
+import useAdmin from "../../../hooks/useAdmin";
+import useSurveyor from "../../../hooks/useSurveyor";
 
 
 
 const Navbar = () => {
     const { user, logout } = useAuth();
-    
-
+   // const isAdmin = true
+     const [isAdmin] = useAdmin();
+     const [isSurveyor] = useSurveyor();
+    console.log(isAdmin,isSurveyor);
     
     const handleSignOut = () => {
         logout()
@@ -121,9 +125,19 @@ const Navbar = () => {
     >
         <li className="text-lg md:text-xl font-semibold">Home</li>
     </NavLink>
+    {  
+       (isAdmin || isSurveyor)?  <NavLink
+       to="/dashboard"
+       className={({ isActive, isPending }) =>
+           isPending ? "pending" : isActive ? "text-emerald-400 underline" : ""
+       }
+   >
+       <li className="text-lg md:text-xl font-semibold"> Dashboard</li>
 
-    
-     <NavLink
+      </NavLink>:""  
+    }
+
+ {/* <NavLink
         to="/dashboard"
         className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-emerald-400 underline" : ""
@@ -131,22 +145,22 @@ const Navbar = () => {
     >
         <li className="text-lg md:text-xl font-semibold"> Dashboard</li>
 
-   </NavLink>
+   </NavLink>  */}
     <NavLink
-        to="/postedJob"
+        to="/pricing"
         className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-emerald-400 underline" : ""
         }
     >
-        <li className="text-lg md:text-xl font-semibold"> My Posted Jobs</li>
+        <li className="text-lg md:text-xl font-semibold">Pricing</li>
 
     </NavLink>
     <NavLink
-        to="/bids"
+        to="/allSurveys"
         className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-emerald-400 underline" : ""
         }
-    >   <li className="text-lg md:text-xl font-semibold"> My Bids</li>
+    >   <li className="text-lg md:text-xl font-semibold">Surveys</li>
 
     </NavLink>
     <NavLink

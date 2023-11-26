@@ -59,7 +59,8 @@ const SignUp = () => {
                 console.log("profile update")
                 const userInfo = {
                     name: name,
-                    email:email
+                    email:email,
+                    role:'user'
                 }
                 axiosPublic.post('/users', userInfo)
                 .then(res => {

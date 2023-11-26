@@ -1,0 +1,21 @@
+[
+    {
+      
+      "package": "Weekly",
+      "price": 25,
+      "description": "Pro User for 7 days unlimited databases daily backups free E-mail"
+    },
+    {
+     
+      "package": "Monthly",
+      "price": 57.44,
+      "description": "Pro User for 1 Month unlimited databases daily backups free E-mail"
+    },
+    {
+      
+      "package": "Yearly",
+      "price": 88.44,
+      "description": "Pro User for 1 Year unlimited databases daily backups free E-mail"
+    }
+  ]
+  

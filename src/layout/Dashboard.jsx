@@ -1,5 +1,7 @@
 import { FaAd, FaBook, FaCalendar, FaHome, FaList,FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
+import useSurveyor from "../hooks/useSurveyor";
 
 
 
@@ -7,14 +9,51 @@ const Dashboard = () => {
     //const [cart] = useCart();
          // TODO: get isAdmin value from the database
     //const isAdmin = true;
-    //const [isAdmin] = useAdmin();
-    const isAdmin = true
+    const [isAdmin] = useAdmin();
+    const [isSurveyor] = useSurveyor();
+    //const isAdmin = true
     return (
         <div className="flex">
             {/* dashboard side bar */}
             <div className="w-64 min-h-screen bg-orange-400">
                 <ul className="menu p-4">
-                    {
+                     {
+                        isAdmin && <>
+                            <li>
+                                <NavLink to="/dashboard/adminHome">
+                                    <FaHome></FaHome>
+                                    Admin Home</NavLink>
+                            </li>
+
+                            <li>
+                                <NavLink to="/dashboard/users">
+                                    <FaUsers></FaUsers>
+                                   Manage Users </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/payments">
+                                    <FaUsers></FaUsers>
+                                   Payments </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/survey">
+                                    <FaUsers></FaUsers>
+                                   Survey </NavLink>
+                            </li>
+
+                        </> 
+                     }
+                     {
+                        isSurveyor && <>
+                            <li>
+                        <NavLink to="/dashboard/addSurvey">
+                        <FaUtensils></FaUtensils>
+                        Survey Creation</NavLink>
+                         </li>
+
+                         </> 
+                     }
+                     {/* {
                         isAdmin? <>
                            <li>
                                 <NavLink to="/dashboard/adminHome">
@@ -45,17 +84,17 @@ const Dashboard = () => {
                         :
                         <>
                         <li>
-                        <NavLink to="/dashboard/userHome">
-                            <FaHome></FaHome>
-                            User Home</NavLink>
-                    </li>
+                        <NavLink to="/dashboard/addSurvey">
+                        <FaUtensils></FaUtensils>
+                        Survey Creation</NavLink>
+                      </li>
                     <li>
                         <NavLink to="/dashboard/history">
                             <FaCalendar></FaCalendar>
                             Payment History</NavLink>
                     </li>
                     <li>
-                        {/* ({cart.length}) */}
+                        
                         <NavLink to="/dashboard/cart">
                             <FaShoppingCart></FaShoppingCart>
                             My Cart </NavLink>
@@ -71,7 +110,7 @@ const Dashboard = () => {
                             Payment Real History</NavLink>
                     </li>
                         </>
-                    }
+                    }  */}
                       {/* shared nav links */}
                     <div className="divider"></div>
                     <li>
