@@ -14,6 +14,7 @@ import Surveys from "../pages/Dashboard/Surveys/Surveys";
 import UserPayment from "../components/UserPayment/UserPayment";
 import AllSurveys from "../pages/AllSurveys/AllSurveys";
 import SurveyDetails from "../pages/SurveyDetails/SurveyDetails";
+import UpdateSurvey from "../pages/AllSurveys/UpdateSurvey";
 
 const router = createBrowserRouter([
     {
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
         {
           path:'surveyDetails/:id',
           element:<SurveyDetails></SurveyDetails>,
+          loader: ({params}) => fetch(`http://localhost:5000/survey/${params.id}`)
+        },
+        {
+          path:'surveyUpdate/:id',
+          element:<UpdateSurvey></UpdateSurvey>,
           loader: ({params}) => fetch(`http://localhost:5000/survey/${params.id}`)
         },
       ]

@@ -4,6 +4,7 @@ import Testimonial from "../Testimonial/Testimonial";
 import FrequentlyAQ from "../Frequently/FrequentlyAQ";
 
 
+
 const Home = () => {
     return (
         <div>
@@ -15,6 +16,7 @@ const Home = () => {
             <Banner></Banner>
             <Testimonial></Testimonial>
             <FrequentlyAQ></FrequentlyAQ>
+            
         </div>
     );
 };

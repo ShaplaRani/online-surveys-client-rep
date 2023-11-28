@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import PropTypes from 'prop-types';
 
-
-const CheckoutForm = () => {
+const CheckoutForm = ({data}) => {
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState('')
     const [transactionId, setTransactionId] = useState('');
@@ -18,7 +18,9 @@ const CheckoutForm = () => {
     const navigate = useNavigate();
 
     //const totalPrice = cart.reduce((total, item) => total + item.price, 0)
-    const totalPrice = 25;
+    console.log(data);
+    const totalPrice =data.price;
+    console.log(totalPrice);
     useEffect(() => {
         if (totalPrice > 0) {
             axiosSecure.post('/create-payment-intent', { price: totalPrice })
@@ -81,17 +83,18 @@ const CheckoutForm = () => {
                 const payment = {
                     email: user.email,
                     price: totalPrice,
+                    package:data.package,
                     transactionId: paymentIntent.id,
-                    date: new Date(), // utc date convert. use moment js to 
-                    cartIds: cart.map(item => item._id),
-                    menuItemIds: cart.map(item => item.menuId),
-                    status: 'pending'
+                    date: new Date(),// utc date convert. use moment js to
+                    role:'pro-user'  
+                    
+                   
                 }
-
-                const res = await axiosSecure.post('/payments', payment);
+               console.log(payment);
+                const res = await axiosSecure.patch('/payments', payment);
                 console.log('payment saved', res.data);
-                refetch();
-                if (res.data?.paymentResult?.insertedId) {
+               
+                if (res.data?.modifiedCount > 0) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
@@ -99,7 +102,7 @@ const CheckoutForm = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    navigate('/dashboard/paymentHistory')
+                    navigate('/')
                 }
 
             }
@@ -135,4 +138,7 @@ const CheckoutForm = () => {
     );
 };
 
+CheckoutForm.propTypes = {
+    data: PropTypes.object
+}
 export default CheckoutForm;
