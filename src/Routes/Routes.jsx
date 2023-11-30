@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         {
           path:'payment/:id',
           element:<UserPayment></UserPayment>,
-          loader: ({params}) => fetch(`http://localhost:5000/packages/${params.id}`)
+          loader: ({params}) => fetch(`https://online-survey-server.vercel.app/packages/${params.id}`)
         },
         {
           path:'allSurveys',
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
         {
           path:'surveyDetails/:id',
           element:<SurveyDetails></SurveyDetails>,
-          loader: ({params}) => fetch(`http://localhost:5000/survey/${params.id}`)
+          loader: ({params}) => fetch(`https://online-survey-server.vercel.app/survey/${params.id}`)
         },
        
       ]
@@ -92,7 +92,7 @@ const router = createBrowserRouter([
         {
           path:'surveyResponsive/:title',
           element:<SurveyResponsive></SurveyResponsive>,
-          loader:({params}) => fetch(`http://localhost:5000/survey-vote/${params.title}`) 
+          loader:({params}) => fetch(`https://online-survey-server.vercel.app/survey-vote/${params.title}`) 
         },
       ]
     }

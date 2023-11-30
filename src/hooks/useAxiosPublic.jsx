@@ -1,8 +1,8 @@
 import axios from "axios";
 
-//http://localhost:5000
+//https://online-survey-server.vercel.app
 const  axiosPublic = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://online-survey-server.vercel.app'
 })
 
 const useAxiosPublic = () => {
