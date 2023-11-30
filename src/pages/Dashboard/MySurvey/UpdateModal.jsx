@@ -72,13 +72,8 @@ const UpdateModal = ({ isOpen, onClose,survey,refetch}) => {
                        </label>
                         <input defaultValue={survey?.title} type="text" placeholder="Survey Title" name="title" className="input input-bordered" required />
                     </div>
-                    {/* image */}
-                    {/* <div className="form-control ">
-                        <label className="label">
-                        <span className="label-text text-2xl font-bold">Image:</span>
-                       </label>
-                        <input type="text" placeholder="Photo URL" name="photo" className="input input-bordered" required />
-                    </div> */}
+             
+                    
                      {/* category */}
                     <div className="form-control ">
                         <label className="label">
@@ -95,42 +90,17 @@ const UpdateModal = ({ isOpen, onClose,survey,refetch}) => {
                      className="input-bordered p-4 input h-40"></textarea>
                    
                  </div> 
-                   {/* qs */}
-                   {/* <div>
+               
+                   
 
-                   {
-                     isQuestionField && <div className="form-control ">
-                     <label className="label">
-                     <span className="label-text text-2xl font-bold">Title:</span>
-                    </label>
-                     <input type="text" placeholder="question" name="qs" className="input input-bordered" required />
-                 </div>
-                   }
-                     <button onClick={handleQuestion}>addQuestionField</button>
-                   </div> */}
+                  
                  <div className=" ">
                          <button  className="w-full text-white mt-6 py-2 text-center rounded-lg text-xl font-semibold bg-emerald-400">
                             Update Survey</button>
                     </div>
             </form>
           
-          {/* <form onSubmit={handleReject} className="p-6">
-            <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="exampleFormControlInput1">
-              Feedback
-            </label>
-            <textarea name="feedback"  placeholder="Feedback" className="w-full px-3 py-2 mb-3 border border-gray-300 rounded-md">
-            
-            </textarea>
-            
-           
-           
-            <button
-            
-              className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-md hover:bg-blue-700"
-            >
-              Submit
-            </button>
-          </form> */}
+          
         </div>
       </div>
     </div>

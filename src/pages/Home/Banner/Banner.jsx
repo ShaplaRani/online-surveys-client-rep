@@ -15,16 +15,7 @@ const Banner = () => {
        
         </div>
 
-        // <div className=" h-[90vh]" style={{ backgroundImage: 'url(https://i.ibb.co/wRcJcJB/banner1.jpg)' }}>
-        //     <div className=""></div>
-        //     <div className="">
-        //         <div className=" max-w-md">
-        //             <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-        //             <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-        //             <button className="btn btn-primary">Explore</button>
-        //         </div>
-        //     </div>
-        // </div>
+        
     );
 };
 

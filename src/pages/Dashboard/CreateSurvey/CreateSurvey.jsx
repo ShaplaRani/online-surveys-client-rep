@@ -4,7 +4,7 @@ import './survey.css'
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useSurveyor from "../../../hooks/useSurveyor";
-import { useState } from "react";
+
 // import { useEffect, useState } from "react";
  import useAuth from "../../../hooks/useAuth";
 const CreateSurvey = () => {
@@ -12,31 +12,7 @@ const CreateSurvey = () => {
     const {user} = useAuth()
    const axiosSecure  = useAxiosSecure();
    const [isSurveyor] = useSurveyor();
-   const [qs,setqs] =useState([]);
-   //ds
-//    const [isQuestionField, setIsQuestionField] = useState(false);
-//    const [question, setQuestion] = useState([]);
-
-//    const handleQuestion = () => {
-//     setIsQuestionField(true)
- //  }
-
-
-    // console.log(user.email);
-    // useEffect(() => {
-    //     axiosSecure.get(`/users/${user.email}`)
-    //     .then(res => {
-    //         console.log('data',res.data);
-    //         // if(res.data.role === 'surveyor'){
-    //         //     setDate(false)
-    //         // }
-    //         // else{
-    //         //     setDate(true)
-    //         // }
-    //     })
-   
-    //  },[axiosSecure,user])
-    
+  
 
     const handleAddSurvey = async(e) => {
            e.preventDefault();
@@ -45,17 +21,17 @@ const CreateSurvey = () => {
            //const photo = form.photo.value;
            const category = form.category.value;
            const description = form.description.value;
-        //    const question = form.qs.value;
+          const question = form.question.value;
         //    console.log(question);
            const surveyData = {
             title,
             email:user?.email,
             category,
             description,
-            question:[],
+            question,
             like:0,
             dislike: 0,
-            // isPublish:false,
+            
             isPublish:true,
             feedback:'',
             isReport: false,
@@ -99,19 +75,20 @@ const CreateSurvey = () => {
                        </label>
                         <input type="text" placeholder="Survey Title" name="title" className="input input-bordered" required />
                     </div>
-                    {/* image */}
-                    {/* <div className="form-control ">
-                        <label className="label">
-                        <span className="label-text text-2xl font-bold">Image:</span>
-                       </label>
-                        <input type="text" placeholder="Photo URL" name="photo" className="input input-bordered" required />
-                    </div> */}
+                    
                      {/* category */}
                     <div className="form-control ">
                         <label className="label">
                         <span className="label-text text-2xl font-bold">Category:</span>
                        </label>
                         <input type="text" placeholder="Survey Category" name="category" className="input input-bordered" required />
+                    </div>
+                    {/* qs */}
+                    <div className="form-control ">
+                        <label className="label">
+                        <span className="label-text text-2xl font-bold">Survey Question:</span>
+                       </label>
+                        <input type="text" placeholder="Please survey question" name="question" className="input input-bordered" required />
                     </div>
                      {/* description */}
                     <div className="form-control">
@@ -122,19 +99,8 @@ const CreateSurvey = () => {
                      className="input-bordered p-4 input h-40"></textarea>
                    
                  </div> 
-                   {/* qs */}
-                   {/* <div>
-
-                   {
-                     isQuestionField && <div className="form-control ">
-                     <label className="label">
-                     <span className="label-text text-2xl font-bold">Title:</span>
-                    </label>
-                     <input type="text" placeholder="question" name="qs" className="input input-bordered" required />
-                 </div>
-                   }
-                     <button onClick={handleQuestion}>addQuestionField</button>
-                   </div> */}
+                   
+                 
                  <div className=" ">
                          <button disabled={!isSurveyor} className="w-full text-white mt-6 py-2 text-center rounded-lg text-xl font-semibold bg-emerald-400">
                             Create Survey</button>

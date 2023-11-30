@@ -10,13 +10,7 @@ import Swal from "sweetalert2";
 const Surveys = () => {
     const axiosSecure = useAxiosSecure();
 
-    // modal related
-    // const [isModalOpen, setModalOpen] = useState(false);
-
-    // const openModal = () => setModalOpen(true);
-    // const closeModal = () => setModalOpen(false);
-
-    //
+    
 
     const { data: surveys = [], refetch, isPending } = useQuery({
         queryKey: ['surveys'],
@@ -57,27 +51,7 @@ const Surveys = () => {
                }
            })
    }
-    //const handleReject = (id, title) => {
-    // e.preventDefault();
-    // console.log('click');
-    // const feedback = e.target.feedback.value;
-    // console.log(feedback);
-    //const feedback = "please create a valid survey"
-    // axiosSecure.patch(`/survey-unpublished/${id}`, { feedback })
-    //     .then(res => {
-    //         console.log(res.data)
-    //         if (res.data.modifiedCount > 0) {
-    //             refetch();
-    //             Swal.fire({
-    //                 position: "top-end",
-    //                 icon: "success",
-    //                 title: `${title} unpublished`,
-    //                 showConfirmButton: false,
-    //                 timer: 1500
-    //             });
-    //         }
-    //     })
-    //}
+    
 
     //console.log(surveys);
     return (
@@ -115,23 +89,12 @@ const Surveys = () => {
                                         : "unPublished"
                                     }
 
-                                    {/* {survey?.isPublish
-                                        ? "complete"
-                                        : <>
-                                            {survey?.feedback
-                                              ? "Reject"
-                                                : "Pending"
-                                            }
-                                        </>
-                                    } */}
+                                    
 
 
                                 </td>
 
-                                {/* <td>
-                                <button disabled={survey?.isPublish ||survey?.feedback} className="btn btn-primary" onClick={() => handlePublished(survey._id, survey?.title)}>Published</button>
-
-                                </td> */}
+                                
 
                                 <td>
 
@@ -173,39 +136,8 @@ const Surveys = () => {
                                             </div>
                                         </dialog>
                                     </div>
-                                    {/* <Fragment>
-                                  <button  disabled={!survey.isReport || !survey?.isPublish } onClick={openModal} className="btn btn-primary" >Reject</button>
-                                <Modal refetch={refetch} survey={survey} isOpen={isModalOpen} onClose={closeModal}>
-                 
-                                 </Modal>
-                               </Fragment> */}
-
-                                    {/* <button disabled={!survey.isReport || !survey?.isPublish } className="btn btn-primary" onClick={() => handleReject(survey._id, survey?.title)}>UnPublished</button> */}
-
-
-                                    {/* <button disabled={survey?.isPublish ||survey?.feedback} className="btn btn-primary" onClick={() => handleReject(survey._id, survey?.title)}>UnPublished</button> */}
-
-                                    {/* <>
-                                       
-                                        <label htmlFor="my_modal_6" className="btn">Unpublished</label>
-
-                                       
-                                        <input type="checkbox" id="my_modal_6" className="modal-toggle" />
-                                        <div className="modal" role="dialog">
-                                            <div className="modal-box">
-                                                <form onSubmit= {handleRegect} } name="feedback" className="flex items-center gap-3">
-                                                <textarea className="textarea textarea-primary" placeholder="Feedback"></textarea>
-                                                 <button className="btn btn-primary px-6"> Feedback</button>
-                                                </form>
-                                                
-                                                <div className="modal-action">
-                                                    <label htmlFor="my_modal_6" className="btn">Close!</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </>  */}
-
-                                </td>
+                                    
+                               </td>
 
                             </tr>)
                         }
@@ -219,4 +151,3 @@ const Surveys = () => {
 
 export default Surveys;
 
-// survey?.isPublish?"Complete":<>  <button className="btn btn-primary" onClick={() => handlePublished(survey._id, survey?.title)}>Published</button></>

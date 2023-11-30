@@ -40,9 +40,10 @@ const Footer = () => {
                     data-aos-duration="1000">
                     <header className="footer-title text-gray-900 opacity-100">Services</header>
 
-                    <p className="link link-hover">Web Development</p>
-                    <p className="link link-hover">Digital Marketing</p>
-                    <p className="link link-hover">Graphics</p>
+                    <p className="link link-hover">Surveys</p>
+                    <p className="link link-hover">Like</p>
+                    <p className="link link-hover">Comment</p>
+                    <p className="link link-hover">Feedback</p>
 
                 </nav>
                 <nav className="text-base font-medium text-gray-700" data-aos="fade-up"
@@ -50,10 +51,10 @@ const Footer = () => {
                     data-aos-duration="1000">
                     <header className="footer-title  text-gray-900 opacity-100">Site links</header>
                     <p className="link link-hover">Home</p>
-                    <p className="link link-hover">My Bids</p>
-                    <p className="link link-hover">Add Job</p>
-                    <p className="link link-hover">My Posted Jobs</p>
-                    <p className="link link-hover">Bid Request</p>
+                    <p className="link link-hover">Pricing</p>
+                    <p className="link link-hover">Surveys</p>
+                    <p className="link link-hover">Dashboard</p>
+                    
 
 
 

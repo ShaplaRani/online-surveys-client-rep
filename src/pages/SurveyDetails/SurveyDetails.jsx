@@ -15,7 +15,7 @@ const SurveyDetails = () => {
     const axiosPublic = useAxiosPublic();
     const [data] = useLoaderData();
     const [showCommentBox, setShowCommentBox] = useState(false)
-    const { title, category, description, like, dislike, _id } = data;
+    const { title, category, description, question, like, dislike, _id } = data;
     const [updateLike, setUpdateLike] = useState(like)
     const [updateDislike, setUpdateDislike] = useState(dislike)
     //
@@ -47,9 +47,7 @@ const SurveyDetails = () => {
             })
         console.log("click", id);
     }
-    // const handleComment = () =>{
-    //     console.log('click');
-    // }
+    
     const handleReport = (id) => {
         console.log('click');
         axiosSecure.patch(`/survey-report/${id}`)
@@ -108,11 +106,7 @@ const SurveyDetails = () => {
               console.log(res.data);
               setIsTrue(false);
               setVoted(vote)
-            //   axiosPublic.patch(`/survey-vote?vote=${vote}`)
-            //   .then(res => {
-            //     console.log(res.data);
-            //   })
-            //   setIsTrue(true)
+            
         })
             }
         })
@@ -131,7 +125,7 @@ const SurveyDetails = () => {
     console.log('comment',comments);
    
     return (
-        <div className=" my-20">
+        <div className=" my-20 p-4">
            
             <div className="  max-w-7xl  mx-auto py-20 px-4 md:px-14 rounded-lg
              bg-emerald-400 shadow-xl flex justify-between items-center ">
@@ -160,7 +154,7 @@ const SurveyDetails = () => {
                     </div>
                 </div>
             </div>
-            <div className="md:flex justify-evenly   mt-14 max-auto">
+            <div className="md:flex justify-evenly gap-5   mt-14 max-auto p-2">
                 
                    <div className="  ">
                      <div className="flex justify-center btn text-3xl font-bold btn-primary">
@@ -168,7 +162,8 @@ const SurveyDetails = () => {
                         isTrue?"poll":voted?voted:isFeedback
                        }
                         </div>
-                     <p className="text-xl text-center font-semibold text-orange-500 mt-10 mb-3">ASK a question</p>
+                     <p className="text-xl text-center font-semibold text-orange-500 mt-10 mb-3">
+                       {question}</p>
                      <div className="flex justify-center">
                         <button disabled={!user} onClick={() => handleVoted('yes')} className="text-xl font-bold rounded-l-lg border-r-2 bg-blue-700 px-5 py-2 text-white ">YES</button>
                         <button disabled={!user} onClick={() => handleVoted('no')} className="text-xl rounded-r-lg  font-bold bg-blue-700 px-5 py-2 text-white ">NO</button>

@@ -1,4 +1,4 @@
-import { FaAd, FaBook, FaCalendar, FaHome, FaList, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
+import {  FaHome,  FaUsers, FaUtensils } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useSurveyor from "../hooks/useSurveyor";
@@ -9,12 +9,10 @@ import { useQuery } from "@tanstack/react-query";
 
 
 const Dashboard = () => {
-    //const [cart] = useCart();
-    // TODO: get isAdmin value from the database
-    //const isAdmin = true;
+    
     const axiosSecure= useAxiosSecure();
 
-    const { data: surveys = [], refetch, isPending } = useQuery({
+    const { data: surveys = [] } = useQuery({
         queryKey: ['surveys'],
         queryFn: async () => {
             const res = await axiosSecure.get('/survey');
@@ -74,11 +72,7 @@ const Dashboard = () => {
 
                     {/* shared nav links */}
                     <div className="divider"></div>
-                    {/* <li>
-                        <NavLink to="/dashboard/surveyResponsive">
-                            <FcSurvey></FcSurvey>
-                            Survey Responsive</NavLink>
-                    </li> */}
+                    
                     <details className="dropdown">
                         <summary className="m-1 btn btn-primary">  <FcSurvey></FcSurvey>Survey Responsive</summary>
                         <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">

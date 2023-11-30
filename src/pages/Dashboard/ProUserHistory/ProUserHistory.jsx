@@ -50,11 +50,7 @@ const ProUserHistory = () => {
                                 </td>
                                 <td>
                                     {user.date}
-                                    {/* <button
-                                    
-                                        className="btn btn-ghost btn-lg">
-                                        <FaTrashAlt className="text-red-600"></FaTrashAlt>
-                                    </button> */}
+                                   
                                 </td>
                                 <td>
                                     {

@@ -20,9 +20,7 @@ const AllUsers = () => {
             return res.data;
         }
     })
-    //const res = await axiosSecure.get('/users');
-    //  console.log(users);
-    //users?sortField=role&sortOrder=${sort}
+    
     //sorting
     const handleFilter = (role) => {
        // setSortData(sort)

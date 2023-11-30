@@ -14,7 +14,7 @@ const Testimonial = () => {
     return (
         <div className="my-20">
              <div className="md:max-w-sm mx-auto text-center my-10">
-           {/* <p className="text-xl font-normal text-yellow-400 mb-2">---{subHeading}---</p> */}
+           
             <h3 className="text-4xl text-orange-600 font-normal mx-2  border-b-2 py-4 uppercase">Testimonials</h3>
         </div>
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">

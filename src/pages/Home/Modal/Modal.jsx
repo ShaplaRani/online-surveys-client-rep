@@ -1,7 +1,7 @@
-import { Fragment, useState } from "react";
 
 
-const Modal = ({ isOpen, onClose, children }) => {
+
+const Modal = ({ isOpen, onClose, }) => {
 
    
     const handleReject = (e) => {
