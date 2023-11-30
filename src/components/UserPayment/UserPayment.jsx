@@ -13,9 +13,9 @@ const UserPayment = () => {
      //const price = data.price;
      console.log(data);
     return (
-        <div>
-            <h3>paymet</h3>
-             <div>
+        <div className="my-24 p-4">
+            <h3 className="text-3xl font-bold text-center">PAYMENT</h3>
+             <div className="max-w-md mx-auto mt-10">
                 <Elements stripe={stripePromise}>
                      <CheckoutForm data={data}></CheckoutForm> 
                 </Elements>

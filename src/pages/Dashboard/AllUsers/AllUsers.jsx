@@ -13,7 +13,7 @@ const AllUsers = () => {
      const [isTrue, setIsTrue] = useState(true)
     const axiosSecure = useAxiosSecure();
     //const axiosPublic = useAxiosPublic();
-    const { data: users = [], refetch } = useQuery({
+    const { data: users = [], refetch , isPending} = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get('/users');
@@ -42,7 +42,7 @@ const AllUsers = () => {
     
 
     //role setup
-    const handleDrop = (user, role) => {
+    const handleStatus = (user, role) => {
         console.log('click', user, role);
         axiosSecure.patch(`/users/admin?id=${user._id}&role=${role}`)
             .then(res => {
@@ -88,12 +88,12 @@ const AllUsers = () => {
     }
 
     return (
-        <div>
+        <div className="">
             <div className="flex justify-evenly items-center mt-4 mb-10">
-                <h2 className="text-3xl">All Users</h2>
-                <h2 className="text-3xl">Total Users: {users.length}</h2>
+                <h2 className="text-3xl font-bold">All Users</h2>
+                <h2 className="text-3xl font-bold">Total Users: {users.length}</h2>
                 <div className="dropdown dropdown-end">
-                    <label tabIndex={0} className="btn m-1"> Filter</label>
+                    <label tabIndex={0} className="btn m-1 btn-primary px-6"> Filter</label>
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                         <li onClick={ () => handleFilter('pro-user')}><a> pro-user</a></li>
                         <li onClick={ () => handleFilter('user')}><a>users</a></li>
@@ -101,8 +101,8 @@ const AllUsers = () => {
                     </ul>
                 </div>
             </div>
-            <div className="w-11/12 mx-auto bg-white rounded-lg">
-                <table className="text-center table w-full">
+            <div className="lg:w-11/12  mx-auto bg-white rounded-lg">
+                <table className="text-center  table w-full">
                     {/* head */}
                     <thead className="bg-emerald-400 text-lg font-medium text-white">
                         <tr>
@@ -110,14 +110,14 @@ const AllUsers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
+                           <th>Status</th>
                             <th>Action</th>
-                            <th>dropdown</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             
-                            isTrue?users.map((user, index) => <tr key={user._id}>
+                            isPending?<span className="loading loading-spinner text-primary"></span> :   isTrue?users.map((user, index) => <tr key={user._id}>
                                 <th>{index + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
@@ -128,22 +128,24 @@ const AllUsers = () => {
                                         <p className="text-xl font-semibold"> {user?.role}</p>
                                     </div>}
                                 </td>
+                                
+                                <td>
+                                    <div className="dropdown dropdown-end">
+                                        <label tabIndex={0} className="btn btn-ghost rounded-btn">Status</label>
+                                        <ul tabIndex={0} className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
+                                            <li onClick={() => handleStatus(user, 'admin')}><a>Admin</a></li>
+                                            <li onClick={() => handleStatus(user, 'surveyor')}><a>Surveyor</a></li>
+                                        </ul>
+                                    </div>
+
+                                </td>
+
                                 <td>
                                     <button
                                         onClick={() => handleDeleteUser(user)}
                                         className="btn btn-ghost btn-lg">
                                         <FaTrashAlt className="text-red-600"></FaTrashAlt>
                                     </button>
-                                </td>
-                                <td>
-                                    <div className="dropdown dropdown-end">
-                                        <label tabIndex={0} className="btn btn-ghost rounded-btn">Dropdown</label>
-                                        <ul tabIndex={0} className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
-                                            <li onClick={() => handleDrop(user, 'admin')}><a>Admin</a></li>
-                                            <li onClick={() => handleDrop(user, 'surveyor')}><a>Surveyor</a></li>
-                                        </ul>
-                                    </div>
-
                                 </td>
                             </tr>):sortData.map((user, index) => <tr key={user._id}>
                                 <th>{index + 1}</th>
@@ -156,22 +158,23 @@ const AllUsers = () => {
                                         <p className="text-xl font-semibold"> {user?.role}</p>
                                     </div>}
                                 </td>
+                               
+                                <td>
+                                    <div className="dropdown dropdown-end">
+                                        <label tabIndex={0} className="btn btn-ghost rounded-btn">Status</label>
+                                        <ul tabIndex={0} className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
+                                            <li onClick={() => handleStatus(user, 'admin')}><a>Admin</a></li>
+                                            <li onClick={() => handleStatus(user, 'surveyor')}><a>Surveyor</a></li>
+                                        </ul>
+                                    </div>
+
+                                </td>
                                 <td>
                                     <button
                                         onClick={() => handleDeleteUser(user)}
                                         className="btn btn-ghost btn-lg">
                                         <FaTrashAlt className="text-red-600"></FaTrashAlt>
                                     </button>
-                                </td>
-                                <td>
-                                    <div className="dropdown dropdown-end">
-                                        <label tabIndex={0} className="btn btn-ghost rounded-btn">Dropdown</label>
-                                        <ul tabIndex={0} className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
-                                            <li onClick={() => handleDrop(user, 'admin')}><a>Admin</a></li>
-                                            <li onClick={() => handleDrop(user, 'surveyor')}><a>Surveyor</a></li>
-                                        </ul>
-                                    </div>
-
                                 </td>
                             </tr>)
                         }

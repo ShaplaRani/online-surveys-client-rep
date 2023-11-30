@@ -18,6 +18,7 @@ const AuthProvider = ({children}) => {
      const googleProvider = new GoogleAuthProvider();
      const axiosPublic = useAxiosPublic();
     // //const githubProvider = new GithubAuthProvider();
+    const [showLikeDislike,setShowLikeDislike]= useState(true)
     
 
     //register
@@ -70,7 +71,7 @@ const AuthProvider = ({children}) => {
         }
      },[ axiosPublic])
 
-     const authInfo ={user, loading,createUser,signInUser,signInWithGoogle, logout}
+     const authInfo ={showLikeDislike,setShowLikeDislike,user, loading,createUser,signInUser,signInWithGoogle, logout}
     
 
     return (

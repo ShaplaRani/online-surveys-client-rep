@@ -14,7 +14,10 @@ import Surveys from "../pages/Dashboard/Surveys/Surveys";
 import UserPayment from "../components/UserPayment/UserPayment";
 import AllSurveys from "../pages/AllSurveys/AllSurveys";
 import SurveyDetails from "../pages/SurveyDetails/SurveyDetails";
-import UpdateSurvey from "../pages/AllSurveys/UpdateSurvey";
+//import UpdateSurvey from "../pages/AllSurveys/UpdateSurvey";
+import ProUserHistory from "../pages/Dashboard/ProUserHistory/ProUserHistory";
+import MySurvey from "../pages/Dashboard/MySurvey/MySurvey";
+import SurveyResponsive from "../pages/Dashboard/SurveyResponsive/SurveyResponsive";
 
 const router = createBrowserRouter([
     {
@@ -38,7 +41,7 @@ const router = createBrowserRouter([
         },
         {
           path:'pricing',
-          element:<PrivateRoute><Pricing></Pricing></PrivateRoute>
+          element:<Pricing></Pricing>
         },
         {
           path:'payment/:id',
@@ -50,15 +53,15 @@ const router = createBrowserRouter([
           element:<AllSurveys></AllSurveys>
         },
         {
+          path:'mySurveys',
+          element:<AllSurveys></AllSurveys>
+        },
+        {
           path:'surveyDetails/:id',
           element:<SurveyDetails></SurveyDetails>,
           loader: ({params}) => fetch(`http://localhost:5000/survey/${params.id}`)
         },
-        {
-          path:'surveyUpdate/:id',
-          element:<UpdateSurvey></UpdateSurvey>,
-          loader: ({params}) => fetch(`http://localhost:5000/survey/${params.id}`)
-        },
+       
       ]
     },
     {
@@ -77,6 +80,19 @@ const router = createBrowserRouter([
         {
           path:'survey',
           element:<AdminRoute><Surveys></Surveys></AdminRoute>
+        },
+        {
+          path:'pro-user',
+          element:<AdminRoute><ProUserHistory></ProUserHistory></AdminRoute>
+        },
+        {
+          path:'mySurvey',
+          element:<MySurvey></MySurvey>
+        },
+        {
+          path:'surveyResponsive/:title',
+          element:<SurveyResponsive></SurveyResponsive>,
+          loader:({params}) => fetch(`http://localhost:5000/survey-vote/${params.title}`) 
         },
       ]
     }

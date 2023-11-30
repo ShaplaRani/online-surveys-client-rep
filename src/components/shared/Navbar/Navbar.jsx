@@ -83,9 +83,9 @@
 //export default Navbar;
 
 import { Link, NavLink } from "react-router-dom";
+import { FcSurvey } from "react-icons/fc";
 
-
-// import logo from '../../assets/logo2.png'
+ import logo from '../../../assets/logo.jpg'
 // import swal from "sweetalert";
 
 import Swal from "sweetalert2";
@@ -175,7 +175,7 @@ const Navbar = () => {
 </>
 
     return (
-        <div className="container mx-auto pr-2">
+        <div className="container mx-auto  px-2">
              <div className="navbar bg-base-100 mt-5">
   <div className="navbar-start">
     <div className="dropdown">
@@ -189,9 +189,10 @@ const Navbar = () => {
         
       </ul>
     </div>
-     <div className="flex gap-0 items-center">
-      {/* <img className="w-20 h-20  " src={logo} alt="" /> */}
-       <a className=" hidden md:block  font-bold text-2xl ">Survey</a>
+     <div className="flex gap-1 items-center text-4xl font-bold text-orange-600">
+        {/* <FcSurvey className="text-orange-600"></FcSurvey> */}
+      <img className="w-20 h-20  " src={logo} alt="" />
+       <a className=" hidden md:block  font-bold text-4xl ">Survey</a>
      </div>
   </div>
   <div className="navbar-center hidden lg:flex">

@@ -6,12 +6,13 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useSurveyor from "../../../hooks/useSurveyor";
 import { useState } from "react";
 // import { useEffect, useState } from "react";
-// import useAuth from "../../../hooks/useAuth";
+ import useAuth from "../../../hooks/useAuth";
 const CreateSurvey = () => {
    // const [data, setDate] = useState(true)
-    //const {user} = useAuth()
+    const {user} = useAuth()
    const axiosSecure  = useAxiosSecure();
    const [isSurveyor] = useSurveyor();
+   const [qs,setqs] =useState([]);
    //ds
 //    const [isQuestionField, setIsQuestionField] = useState(false);
 //    const [question, setQuestion] = useState([]);
@@ -48,15 +49,16 @@ const CreateSurvey = () => {
         //    console.log(question);
            const surveyData = {
             title,
-           
+            email:user?.email,
             category,
             description,
             question:[],
             like:0,
             dislike: 0,
-            isPublish:false,
+            // isPublish:false,
+            isPublish:true,
             feedback:'',
-           
+            isReport: false,
             timestamp: new Date().toLocaleString(),
            }
 

@@ -129,9 +129,11 @@ const CheckoutForm = ({data}) => {
                 }}
             />
             {/* disabled={!stripe || !clientSecret} */}
-            <button className="btn btn-sm btn-primary my-4" disabled={!stripe || !clientSecret} type="submit" >
+           <div className="text-center">
+           <button className="btn px-6  btn-sm btn-primary my-4" disabled={!stripe || !clientSecret} type="submit" >
                 Pay
             </button>
+           </div>
              <p className="text-red-600">{error}</p>
             {transactionId && <p className="text-green-600"> Your transaction id: {transactionId}</p>}
         </form>

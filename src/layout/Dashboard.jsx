@@ -1,14 +1,27 @@
-import { FaAd, FaBook, FaCalendar, FaHome, FaList,FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
+import { FaAd, FaBook, FaCalendar, FaHome, FaList, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useSurveyor from "../hooks/useSurveyor";
+import { FcSurvey } from "react-icons/fc";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 
 
 const Dashboard = () => {
     //const [cart] = useCart();
-         // TODO: get isAdmin value from the database
+    // TODO: get isAdmin value from the database
     //const isAdmin = true;
+    const axiosSecure= useAxiosSecure();
+
+    const { data: surveys = [], refetch, isPending } = useQuery({
+        queryKey: ['surveys'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/survey');
+            console.log(res.data);
+            return res.data;
+        }
+    })
     const [isAdmin] = useAdmin();
     const [isSurveyor] = useSurveyor();
     //const isAdmin = true
@@ -17,7 +30,7 @@ const Dashboard = () => {
             {/* dashboard side bar */}
             <div className="w-64 min-h-screen bg-orange-400">
                 <ul className="menu p-4">
-                     {
+                    {
                         isAdmin && <>
                             <li>
                                 <NavLink to="/dashboard/adminHome">
@@ -28,97 +41,60 @@ const Dashboard = () => {
                             <li>
                                 <NavLink to="/dashboard/users">
                                     <FaUsers></FaUsers>
-                                   Manage Users </NavLink>
+                                    Manage Users </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/payments">
+                                <NavLink to="/dashboard/pro-user">
                                     <FaUsers></FaUsers>
-                                   Payments </NavLink>
+                                    Pro-User History </NavLink>
                             </li>
                             <li>
                                 <NavLink to="/dashboard/survey">
-                                    <FaUsers></FaUsers>
-                                   Survey </NavLink>
+                                    <FcSurvey></FcSurvey>
+                                    Survey </NavLink>
                             </li>
 
-                        </> 
-                     }
-                     {
+                        </>
+                    }
+                    {
                         isSurveyor && <>
                             <li>
-                        <NavLink to="/dashboard/addSurvey">
-                        <FaUtensils></FaUtensils>
-                        Survey Creation</NavLink>
-                         </li>
-
-                         </> 
-                     }
-                     {/* {
-                        isAdmin? <>
-                           <li>
-                                <NavLink to="/dashboard/adminHome">
-                                    <FaHome></FaHome>
-                                    Admin Home</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/addItems">
+                                <NavLink to="/dashboard/addSurvey">
                                     <FaUtensils></FaUtensils>
-                                    Add Items</NavLink>
+                                    Survey Creation</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/manageItems">
-                                    <FaList></FaList>
-                                    Manage Items</NavLink>
+                                <NavLink to="/dashboard/mySurvey">
+                                    <FcSurvey></FcSurvey>
+                                    My Surveys</NavLink>
                             </li>
-                            <li>
-                                <NavLink to="/dashboard/bookings">
-                                    <FaBook></FaBook>
-                                    Manage Bookings</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/users">
-                                    <FaUsers></FaUsers>
-                                    All Users</NavLink>
-                            </li>
+
                         </>
-                        :
-                        <>
-                        <li>
-                        <NavLink to="/dashboard/addSurvey">
-                        <FaUtensils></FaUtensils>
-                        Survey Creation</NavLink>
-                      </li>
-                    <li>
-                        <NavLink to="/dashboard/history">
-                            <FaCalendar></FaCalendar>
-                            Payment History</NavLink>
-                    </li>
-                    <li>
-                        
-                        <NavLink to="/dashboard/cart">
-                            <FaShoppingCart></FaShoppingCart>
-                            My Cart </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/dashboard/review">
-                            <FaAd></FaAd>
-                            Add a Review</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/dashboard/paymentHistory">
-                            <FaCalendar></FaCalendar>
-                            Payment Real History</NavLink>
-                    </li>
-                        </>
-                    }  */}
-                      {/* shared nav links */}
+                    }
+
+                    {/* shared nav links */}
                     <div className="divider"></div>
+                    {/* <li>
+                        <NavLink to="/dashboard/surveyResponsive">
+                            <FcSurvey></FcSurvey>
+                            Survey Responsive</NavLink>
+                    </li> */}
+                    <details className="dropdown">
+                        <summary className="m-1 btn btn-primary">  <FcSurvey></FcSurvey>Survey Responsive</summary>
+                        <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                            {
+                                surveys.map(survey => 
+                                <Link to={`/dashboard/surveyResponsive/${survey.title}`} key={survey._id}> <li ><a>{survey.title}</a></li></Link> )
+                            }
+                            
+                        </ul>
+                    </details>
                     <li>
                         <NavLink to="/">
                             <FaHome></FaHome>
                             Home</NavLink>
                     </li>
-                   
+
                 </ul>
             </div>
             {/* dashboard content */}
