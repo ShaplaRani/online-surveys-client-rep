@@ -77,6 +77,22 @@ const Navbar = () => {
     >   <li className="text-lg md:text-xl font-semibold">Surveys</li>
 
     </NavLink>
+    <NavLink
+        to="/contact"
+        className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-emerald-400 underline" : ""
+        }
+    >   <li className="text-lg md:text-xl font-semibold">Contact</li>
+
+    </NavLink>
+    <NavLink
+        to="/about"
+        className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-emerald-400 underline" : ""
+        }
+    >   <li className="text-lg md:text-xl font-semibold">About us</li>
+
+    </NavLink>
      
 
 </>

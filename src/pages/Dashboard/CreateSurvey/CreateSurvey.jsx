@@ -107,7 +107,7 @@ const CreateSurvey = () => {
                     </div>
             </form>
             </div>
-        </div>
+            </div>
     );
 };
 

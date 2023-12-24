@@ -4,7 +4,7 @@ const FrequentlyAQ = () => {
     return (
         <div className="lg:flex items-center gap-5 p-5 mt-20">
              <div className="flex-1">
-                <img src="https://i.ibb.co/tLGySYQ/faq.jpg" alt="" />
+                <img src="https://i.postimg.cc/Sj0hw5Xd/survey-FAQ.jpg" alt="" />
              </div>
             <div className="flex-1">
             <h3 className="text-2xl md:text-5xl font-bold text-center  mb-10">Frequently Asked Questions?</h3>

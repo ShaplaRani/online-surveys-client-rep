@@ -18,6 +18,8 @@ import SurveyDetails from "../pages/SurveyDetails/SurveyDetails";
 import ProUserHistory from "../pages/Dashboard/ProUserHistory/ProUserHistory";
 import MySurvey from "../pages/Dashboard/MySurvey/MySurvey";
 import SurveyResponsive from "../pages/Dashboard/SurveyResponsive/SurveyResponsive";
+import ContactUs from "../pages/ContactUs/ContactUs";
+import About from "../pages/About/About";
 
 const router = createBrowserRouter([
     {
@@ -61,6 +63,14 @@ const router = createBrowserRouter([
           element:<SurveyDetails></SurveyDetails>,
           loader: ({params}) => fetch(`https://online-survey-server.vercel.app/survey/${params.id}`)
         },
+        {
+          path:'contact',
+          element:<ContactUs></ContactUs>
+        },
+        {
+          path:'about',
+          element:<About></About>
+        }
        
       ]
     },
